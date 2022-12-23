@@ -1,5 +1,4 @@
 import frontend
-import backend
 import Exceptions
 
 if __name__ == '__main__':
@@ -11,20 +10,17 @@ if __name__ == '__main__':
         #input
         ingredients = input("Please type in what ingredients you have at home: ")
 
+        cheers = frontend.create_instance(ingredients)
+
         #output- list of cocktails for user to choose from
         print("Here is a menu of cocktails for you to choose from: ")
-
-        cocktail_menu = backend.create_cocktail_menu(ingredients) #save for use later
-
-        print(frontend.print_menu_nicely(cocktail_menu))
+        print(frontend.present_menu(cheers))
 
         #input
         cocktail_num = input("Please type in the serial number of the chosen cocktail: ")
 
         #output- recipe
-        cocktail = frontend.cocktail_num_to_name(cocktail_num, cocktail_menu)
-        recipe = backend.get_recipe(cocktail)
-        print(frontend.print_recipe_nicely(recipe))
+        print(frontend.present_recipe(cocktail_num, cheers))
 
     except Exceptions.InvalidInput:
         print("invalid input")
