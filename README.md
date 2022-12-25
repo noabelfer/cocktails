@@ -1,5 +1,5 @@
 # Cocktails
-Cocktails is a programe that is based on a cocktail DB API, and presents cocktail recipes based on an ingredient the user enters.
+Cocktails is a programme that is based on a cocktail DB API, and presents cocktail recipes based on an ingredient the user enters.
 It is a joined project by Tamar, Noa and Hemed.
 
 ## Modules
