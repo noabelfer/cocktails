@@ -1,8 +1,12 @@
-class InvalidInput(Exception):
+class CoctailAppError(Exception):
     pass
-class PageNotFound(Exception):
+
+class InvalidInput(CoctailAppError):
     pass
-class EmptyPage(Exception):
+class PageNotFound(CoctailAppError):
     pass
-class NoCocktail(Exception):
+class EmptyPage(CoctailAppError):
     pass
+class NoCocktail(CoctailAppError):
+    def __init__(self, ingredients):
+        self.ingredients = ingredients

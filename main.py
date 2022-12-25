@@ -26,3 +26,9 @@ if __name__ == '__main__':
         print("invalid input")
     except Exceptions.PageNotFound:
         print("Page not found")
+    except Exceptions.NoCocktail as e:
+        print(f"No coctail found for your ingredients: {e.ingredients}")
+    except Exceptions.CoctailAppError:
+        print("unexpected error in Coctails app")
+    except Exception:
+        print("Unexpected error")

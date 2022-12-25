@@ -18,11 +18,11 @@ class CocktailIdeas:
         #make sure response is legitimate
 
         if response.status_code >= 400:
-            raise Exceptions.PageNotFound
+            raise Exceptions.PageNotFound()
         try:
             cocktail_dict = response.json()
         except:
-            raise Exceptions.EmptyPage
+            raise Exceptions.EmptyPage()
         cocktail_menu = [cocktail_dict['drinks'][i]['strDrink'] for i in range(len(cocktail_dict['drinks']))]
 
         return cocktail_menu
@@ -35,7 +35,7 @@ class CocktailIdeas:
             collated_menu = collated_menu&list_of_menus[i]
 
         if len(collated_menu) == 0:
-            raise Exceptions.NoCocktail
+            raise Exceptions.NoCocktail(self.ingredients)
 
         return list(collated_menu)
 
@@ -54,7 +54,7 @@ class CocktailIdeas:
         if int(cocktail_num) in range(len(self.menu)):
             self.cocktail_name = self.menu[int(cocktail_num)][1]
         else:
-            raise Exceptions.InvalidInput
+            raise Exceptions.InvalidInput()
         return self.cocktail_name
 
     def create_recipe(self):
@@ -64,7 +64,7 @@ class CocktailIdeas:
         response = requests.get(f"https://www.thecocktaildb.com/api/json/v1/1/search.php?s={self.cocktail_name}")
 
         if response.status_code >= 400:
-            raise Exceptions.PageNotFound
+            raise Exceptions.PageNotFound()
 
         #reach relevant dictionary
         drinks_dict = response.json()['drinks'][0]
